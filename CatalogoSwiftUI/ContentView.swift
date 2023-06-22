@@ -7,16 +7,52 @@
 
 import SwiftUI
 
+
+
+
+
 struct ContentView: View {
+    @StateObject var viewModel = ViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        NavigationView{
+            List{
+                ForEach(viewModel.catalog.resultado.productos, id: \.self){
+                    product in
+                    let url = URL(string: product.urlImagenes[0])
+                    NavigationLink(destination: DetailView(producto: product)){
+                        HStack{
+                            AsyncImage(url: url, content: {
+                                image in
+                                image.resizable()
+                                    .scaledToFit()
+                                    .padding()
+                                    
+                            }, placeholder: {
+                                ProgressView()
+                            })
+                            
+                            Text(product.nombre)
+                                .bold()
+                        }
+                    }
+                    
+                }.onAppear{
+                    viewModel.fetch()
+                }
+                
+                
+                
+            }
+            
+            .onAppear{
+                viewModel.fetch()
+            }
+            
         }
-        .padding()
     }
+    
+  
 }
 
 struct ContentView_Previews: PreviewProvider {
