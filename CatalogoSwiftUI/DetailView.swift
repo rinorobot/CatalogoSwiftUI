@@ -30,7 +30,7 @@ struct DetailView: View {
             })
            
             Text(producto.nombre).font(.largeTitle)
-            Text("$"+String(format: "%.2f$", "\(producto.precioFinal)")).font(.title)
+            Text("$"+String(format: "%.2f", producto.precioFinal)).font(.title)
             Text("Categoría:"+producto.codigoCategoria).font(.title)
             
                            
