@@ -9,41 +9,6 @@ import Foundation
 import SwiftUI
 
 
-struct DataCatalog: Hashable, Codable{
-    let advertencia: String
-    let codigo: String
-    let folio: String
-    let mensaje: String
-    var resultado: Resultado
-    
-    
-}
-
-struct Resultado: Hashable, Codable{
-    let categoria: String
-    let paginacion: Paginacion
-    var productos: [Producto]
-}
-
-struct Paginacion: Hashable, Codable{
-    let pagina: Int
-    let totalPaginas: Int
-    let totalRegistros: Int
-    let totalRegistrosPorPagina: Int
-}
-
-struct Producto: Hashable, Codable{
-
-    let codigoCategoria: String
-
-    let id: String
-
-    var nombre: String
-
-    let precioFinal: Double
-
-    let urlImagenes: [String]
-}
 
 
 
